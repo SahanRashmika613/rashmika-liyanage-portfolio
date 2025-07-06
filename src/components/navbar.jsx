@@ -1,87 +1,55 @@
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import useScrollSpy from "../hooks/useScrollSpy";
+// This is how your Hero/Home section should look
+// Add this padding to your main content container or hero section
 
-const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const activeId = useScrollSpy(
-    ["home", "about", "skills", "services", "projects", "contact"],
-    100
-  );
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const handleNavClick = (id) => {
-    setIsMenuOpen(false); // Close menu when clicking a nav item
-    // Smooth scroll to section
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
+export default function Hero() {
   return (
-    <nav className="bg-[#0a0a0a] text-white fixed w-full top-0 z-50 shadow border-b border-gray-700">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <div className="text-xl md:text-2xl font-extrabold bg-gradient-to-r from-pink-500 to-orange-500 bg-clip-text text-transparent">
-          Sahan Rashmika Liyanage
+    <div id="home" className="min-h-screen pt-20 sm:pt-24 px-4 sm:px-8">
+      {/* pt-20 on mobile, pt-24 on larger screens to account for navbar */}
+      
+      <div className="max-w-6xl mx-auto">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
+          I Am <span className="text-pink-500">Rashmika Liyanage</span>
+        </h1>
+        
+        <p className="text-lg sm:text-xl text-blue-400 mb-6">
+          I'm a UI/UX Designer
+        </p>
+        
+        <div className="text-gray-300 mb-8 leading-relaxed">
+          <p>
+            BEng (Hons) Software Engineering undergraduate at the 
+            Informatics Institute of Technology (IIT), affiliated with the 
+            University of Westminster.
+          </p>
+          <br />
+          <p>
+            Passionate about designing and building scalable, user-friendly 
+            software solutions. Eager to apply my skills through an internship 
+            and contribute to a high-performing team, leveraging my foundation 
+            in full-stack development and problem-solving.
+          </p>
         </div>
         
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-7 text-lg font-medium">
-          {["home", "about", "skills", "services", "projects", "contact"].map(
-            (id) => (
-              <li key={id}>
-                <a
-                  href={`#${id}`}
-                  className={`relative ${
-                    activeId === id ? "text-red-500" : ""
-                  } after:absolute after:left-0 after:bottom-[-4px] after:h-0.5 after:bg-red-500 ${
-                    activeId === id ? "after:w-full" : "after:w-0"
-                  } hover:after:w-full after:transition-all after:duration-300`}
-                >
-                  {id.charAt(0).toUpperCase() + id.slice(1)}
-                </a>
-              </li>
-            )
-          )}
-        </ul>
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={toggleMenu}
-          className="md:hidden p-2 rounded-lg hover:bg-gray-800 transition-colors"
-        >
-          {isMenuOpen ? (
-            <X className="h-6 w-6" />
-          ) : (
-            <Menu className="h-6 w-6" />
-          )}
-        </button>
-      </div>
-
-      {/* Mobile Menu Overlay */}
-      {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-[#0a0a0a] border-b border-gray-700 shadow-lg">
-          <ul className="flex flex-col py-2">
-            {["home", "about", "skills", "services", "projects", "contact"].map(
-              (id) => (
-                <li key={id}>
-                  <button
-                    onClick={() => handleNavClick(id)}
-                    className={`w-full text-left px-4 py-3 text-lg font-medium hover:bg-gray-800 transition-colors ${
-                      activeId === id ? "text-red-500 bg-gray-800" : ""
-                    }`}
-                  >
-                    {id.charAt(0).toUpperCase() + id.slice(1)}
-                  </button>
-                </li>
-              )
-            )}
-          </ul>
+        <div className="flex flex-col sm:flex-row gap-4 mb-8">
+          <button className="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-full transition-colors">
+            View My Work
+          </button>
+          <button className="border border-white/30 hover:border-white text-white px-8 py-3 rounded-full transition-colors">
+            Download CV
+          </button>
         </div>
-      )}
-    </nav>
+        
+        {/* Your profile image here */}
+        <div className="flex justify-center">
+          <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-white/20">
+            <img 
+              src="/path-to-your-image.jpg" 
+              alt="Rashmika Liyanage" 
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   );
-};
-
-export default Navbar;
+}
