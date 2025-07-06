@@ -1,6 +1,6 @@
 // src/components/Hero.jsx
 import { useState, useEffect } from 'react';
-import profileImage from "../assets/profile.jpg";
+import profileImage from "../assets/p.jpg";
 
 export default function Hero() {
   const [displayText, setDisplayText] = useState('');
