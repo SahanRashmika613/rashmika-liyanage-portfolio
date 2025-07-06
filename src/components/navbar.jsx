@@ -57,9 +57,11 @@ const Navbar = () => {
   };
 
   const handleMobileMenuClick = (e, id) => {
-    // For mobile menu, just show the active state without navigation
     e.preventDefault();
-    // Don't close the menu, just scroll to show the section
+    // Close the menu immediately when clicking on mobile
+    setIsMenuOpen(false);
+    
+    // Smooth scroll to section
     const element = document.getElementById(id);
     if (element) {
       const offsetTop = element.offsetTop - 80;
@@ -101,7 +103,7 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMenu}
-          className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1 focus:outline-none"
+          className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1 focus:outline-none z-50 relative"
           aria-label="Toggle menu"
         >
           <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${
@@ -125,28 +127,30 @@ const Navbar = () => {
       )}
 
       {/* Mobile Menu */}
-      <div className={`md:hidden fixed top-0 right-0 h-full w-64 bg-[#0a0a0a] border-l border-gray-700 transform transition-transform duration-300 ease-in-out z-50 ${
+      <div className={`md:hidden fixed top-0 right-0 h-full w-72 bg-[#0a0a0a] border-l border-gray-700 transform transition-transform duration-300 ease-in-out z-50 ${
         isMenuOpen ? 'translate-x-0' : 'translate-x-full'
       }`}>
         <div className="p-6 pt-20">
-          <ul className="space-y-6">
+          <ul className="space-y-4">
             {["home", "about", "skills", "services", "projects", "contact"].map(
               (id) => (
                 <li key={id}>
                   <a
                     href={`#${id}`}
                     onClick={(e) => handleMobileMenuClick(e, id)}
-                    className={`block text-lg font-medium py-3 px-4 rounded-lg transition-all duration-300 relative ${
+                    className={`block text-lg font-medium py-4 px-6 rounded-lg transition-all duration-300 relative ${
                       activeId === id 
-                        ? "text-red-500 bg-red-500 bg-opacity-10" 
+                        ? "text-red-500 bg-red-500 bg-opacity-10 border-l-4 border-red-500" 
                         : "text-white hover:text-red-500 hover:bg-gray-800"
                     }`}
                   >
-                    {/* Active indicator bar */}
-                    <div className={`absolute left-0 top-0 w-1 h-full bg-red-500 rounded-r transition-all duration-300 ${
-                      activeId === id ? 'opacity-100' : 'opacity-0'
-                    }`}></div>
-                    <span className="ml-2">{id.charAt(0).toUpperCase() + id.slice(1)}</span>
+                    <span>{id.charAt(0).toUpperCase() + id.slice(1)}</span>
+                    {/* Current section indicator */}
+                    {activeId === id && (
+                      <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-xs text-red-400">
+                        Current
+                      </span>
+                    )}
                   </a>
                 </li>
               )
