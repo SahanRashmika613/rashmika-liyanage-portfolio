@@ -2,29 +2,36 @@ import { useState, useEffect } from "react";
 
 // useScrollSpy hook implementation
 function useScrollSpy(sectionIds, offset = 0) {
-  const [activeId, setActiveId] = useState("");
+  const [activeId, setActiveId] = useState("home");
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + offset + 100;
+      
+      // Find the current section based on scroll position
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sectionIds[i]);
+        if (section) {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            setActiveId(sectionIds[i]);
+            break;
           }
-        });
-      },
-      {
-        rootMargin: `-${offset}px 0px 0px 0px`,
-        threshold: 0.6,
+        }
       }
-    );
+    };
 
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
+    // Set initial active section
+    handleScroll();
+    
+    // Listen for scroll events
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [sectionIds, offset]);
 
   return activeId;
@@ -32,10 +39,14 @@ function useScrollSpy(sectionIds, offset = 0) {
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const activeId = useScrollSpy(
+  const [manualActiveId, setManualActiveId] = useState(null);
+  const scrollActiveId = useScrollSpy(
     ["home", "about", "skills", "services", "projects", "contact"],
     100
   );
+  
+  // Use manual active ID if set, otherwise use scroll spy
+  const activeId = manualActiveId || scrollActiveId;
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -44,6 +55,7 @@ const Navbar = () => {
   const handleLinkClick = (e, id) => {
     e.preventDefault();
     setIsMenuOpen(false);
+    setManualActiveId(id); // Set active immediately
     
     const element = document.getElementById(id);
     if (element) {
@@ -52,12 +64,18 @@ const Navbar = () => {
         top: offsetTop,
         behavior: 'smooth'
       });
+      
+      // Clear manual active ID after scrolling completes
+      setTimeout(() => {
+        setManualActiveId(null);
+      }, 1000);
     }
   };
 
   const handleMobileMenuClick = (e, id) => {
     e.preventDefault();
     setIsMenuOpen(false);
+    setManualActiveId(id); // Set active immediately
     
     const element = document.getElementById(id);
     if (element) {
@@ -66,6 +84,11 @@ const Navbar = () => {
         top: offsetTop,
         behavior: 'smooth'
       });
+      
+      // Clear manual active ID after scrolling completes
+      setTimeout(() => {
+        setManualActiveId(null);
+      }, 1000);
     }
   };
 
