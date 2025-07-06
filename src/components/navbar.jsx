@@ -56,6 +56,20 @@ const Navbar = () => {
     }
   };
 
+  const handleMobileMenuClick = (e, id) => {
+    // For mobile menu, just show the active state without navigation
+    e.preventDefault();
+    // Don't close the menu, just scroll to show the section
+    const element = document.getElementById(id);
+    if (element) {
+      const offsetTop = element.offsetTop - 80;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <nav className="bg-[#0a0a0a] text-white fixed w-full top-0 z-50 shadow border-b border-gray-700">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
@@ -121,14 +135,18 @@ const Navbar = () => {
                 <li key={id}>
                   <a
                     href={`#${id}`}
-                    onClick={(e) => handleLinkClick(e, id)}
-                    className={`block text-lg font-medium py-2 px-4 rounded-lg transition-all duration-300 ${
+                    onClick={(e) => handleMobileMenuClick(e, id)}
+                    className={`block text-lg font-medium py-3 px-4 rounded-lg transition-all duration-300 relative ${
                       activeId === id 
-                        ? "text-red-500 bg-red-500 bg-opacity-10 border-l-4 border-red-500" 
+                        ? "text-red-500 bg-red-500 bg-opacity-10" 
                         : "text-white hover:text-red-500 hover:bg-gray-800"
                     }`}
                   >
-                    {id.charAt(0).toUpperCase() + id.slice(1)}
+                    {/* Active indicator bar */}
+                    <div className={`absolute left-0 top-0 w-1 h-full bg-red-500 rounded-r transition-all duration-300 ${
+                      activeId === id ? 'opacity-100' : 'opacity-0'
+                    }`}></div>
+                    <span className="ml-2">{id.charAt(0).toUpperCase() + id.slice(1)}</span>
                   </a>
                 </li>
               )
