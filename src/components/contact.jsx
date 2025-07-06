@@ -1,5 +1,4 @@
 import { Mail, Phone, MapPin, Send } from "lucide-react";
-
 export default function Contact() {
   return (
     <div className="w-full flex justify-center">
@@ -18,9 +17,9 @@ export default function Contact() {
           <div className="rounded-xl p-6 sm:p-8 bg-black/80 border border-white/10 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 relative group">
             {/* Top accent line on hover */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-pink-500 to-purple-500 rounded-t-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            
+
             <h2 className="text-xl sm:text-2xl font-bold mb-6 text-white">Send me a message</h2>
-            
+
             <form className="space-y-4 sm:space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input
@@ -34,19 +33,19 @@ export default function Contact() {
                   className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all text-sm sm:text-base"
                 />
               </div>
-              
+
               <input
                 type="text"
                 placeholder="What's this about?"
                 className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all text-sm sm:text-base"
               />
-              
+
               <textarea
                 placeholder="Tell me about your project or just say hello!"
                 rows="4"
                 className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all resize-none text-sm sm:text-base"
               ></textarea>
-              
+
               <button
                 type="submit"
                 className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 group text-sm sm:text-base"
@@ -61,9 +60,9 @@ export default function Contact() {
           <div className="rounded-xl p-6 sm:p-8 bg-black/80 border border-white/10 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 relative group">
             {/* Top accent line on hover */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-t-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            
+
             <h2 className="text-xl sm:text-2xl font-bold mb-6 text-white">Contact Information</h2>
-            
+
             <div className="space-y-6 sm:space-y-8">
               {/* Email */}
               <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg bg-black/60 border border-white/10 hover:border-blue-500 hover:shadow-md hover:shadow-blue-500/20 transition-all duration-300 relative group">
