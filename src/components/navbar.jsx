@@ -103,7 +103,7 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMenu}
-          className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1 focus:outline-none z-50 relative"
+          className="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1 focus:outline-none z-50 relative bg-gray-800 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition-all duration-300"
           aria-label="Toggle menu"
         >
           <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${
@@ -127,29 +127,43 @@ const Navbar = () => {
       )}
 
       {/* Mobile Menu */}
-      <div className={`md:hidden fixed top-0 right-0 h-full w-72 bg-[#0a0a0a] border-l border-gray-700 transform transition-transform duration-300 ease-in-out z-50 ${
+      <div className={`md:hidden fixed top-0 right-0 h-full w-80 bg-[#0a0a0a] bg-opacity-95 backdrop-blur-sm border-l border-gray-700 transform transition-transform duration-300 ease-in-out z-50 ${
         isMenuOpen ? 'translate-x-0' : 'translate-x-full'
       }`}>
-        <div className="p-6 pt-20">
-          <ul className="space-y-4">
+        {/* Close button */}
+        <div className="flex justify-end p-4">
+          <button
+            onClick={toggleMenu}
+            className="text-white hover:text-red-500 transition-colors duration-200"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="px-6 pt-4">
+          <h2 className="text-xl font-bold text-white mb-8 text-center">Navigation</h2>
+          <ul className="space-y-2">
             {["home", "about", "skills", "services", "projects", "contact"].map(
               (id) => (
                 <li key={id}>
                   <a
                     href={`#${id}`}
                     onClick={(e) => handleMobileMenuClick(e, id)}
-                    className={`block text-lg font-medium py-4 px-6 rounded-lg transition-all duration-300 relative ${
+                    className={`flex items-center justify-between text-lg font-medium py-4 px-4 rounded-lg transition-all duration-300 ${
                       activeId === id 
-                        ? "text-red-500 bg-red-500 bg-opacity-10 border-l-4 border-red-500" 
-                        : "text-white hover:text-red-500 hover:bg-gray-800"
+                        ? "text-red-500 bg-red-500 bg-opacity-15 border border-red-500 border-opacity-30" 
+                        : "text-white hover:text-red-500 hover:bg-gray-800 hover:bg-opacity-50"
                     }`}
                   >
                     <span>{id.charAt(0).toUpperCase() + id.slice(1)}</span>
                     {/* Current section indicator */}
                     {activeId === id && (
-                      <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-xs text-red-400">
-                        Current
-                      </span>
+                      <div className="flex items-center space-x-2">
+                        <span className="text-xs text-red-400">Current</span>
+                        <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                      </div>
                     )}
                   </a>
                 </li>
