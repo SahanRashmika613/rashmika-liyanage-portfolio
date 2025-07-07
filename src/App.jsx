@@ -9,9 +9,14 @@ import Projects from "./components/projects";
 import Contact from "./components/contact";
 import Footer from "./components/footer";
 
+// 👉 Add this import:
+import { Toaster } from "react-hot-toast";
+
 export default function App() {
   return (
     <div className="relative text-white">
+      <Toaster position="top-right" /> {/* 🔥 Toasts appear here */}
+
       <Particle />
       <Navbar />
 
