@@ -118,7 +118,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-yellow-500 hover:bg-rose-600 disabled:bg-yellow-400 disabled:cursor-not-allowed text-black font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 group text-sm sm:text-base"
+                className="w-full bg-yellow-500 hover:bg-green-600 disabled:bg-yellow-400 disabled:cursor-not-allowed text-black font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 group text-sm sm:text-base"
               >
                 <Send className={`h-4 w-4 sm:h-5 sm:w-5 transition-transform ${loading ? 'animate-pulse' : 'group-hover:translate-x-1'}`} />
                 {loading ? 'Sending...' : 'Send Message'}
