@@ -17,34 +17,38 @@ export default function Footer() {
           {/* Social Icons - Left side */}
           <div className="flex space-x-4">
             <a 
-              href="https://github.com/yourusername" 
+              href="https://github.com/SahanRashmika613" 
               target="_blank" 
               rel="noopener noreferrer"
               className="bg-gray-800 hover:bg-gray-700 hover:shadow-lg hover:shadow-gray-500/50 hover:scale-110 p-3 rounded-full transition-all duration-300 transform"
+              aria-label="Visit my GitHub profile"
             >
               <FaGithub size={20} />
             </a>
             <a 
-              href="https://linkedin.com/in/yourusername" 
+              href="https://www.linkedin.com/in/rashmika-liyanage-93570a331" 
               target="_blank" 
               rel="noopener noreferrer"
               className="bg-gray-800 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/50 hover:scale-110 p-3 rounded-full transition-all duration-300 transform"
+              aria-label="Visit my LinkedIn profile"
             >
               <FaLinkedin size={20} />
             </a>
             <a 
-              href="https://instagram.com/yourusername" 
+              href="https://www.instagram.com/_rash_liyanage_?igsh=Y2N3cWZwMmc3azBy" 
               target="_blank" 
               rel="noopener noreferrer"
               className="bg-gray-800 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:shadow-lg hover:shadow-pink-500/50 hover:scale-110 p-3 rounded-full transition-all duration-300 transform"
+              aria-label="Visit my Instagram profile"
             >
               <FaInstagram size={20} />
             </a>
             <a 
-              href="https://facebook.com/yourusername" 
+              href="https://www.facebook.com/share/1575LoXC7B/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="bg-gray-800 hover:bg-blue-800 hover:shadow-lg hover:shadow-blue-500/50 hover:scale-110 p-3 rounded-full transition-all duration-300 transform"
+              aria-label="Visit my Facebook profile"
             >
               <FaFacebook size={20} />
             </a>
