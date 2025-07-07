@@ -14,7 +14,7 @@ export default function Projects() {
       description:
         "AgriMart is a mobile application designed to connect farmers and buyers within the agricultural ecosystem. It includes an AI-driven price prediction model for vegetables, achieving 93% accuracy. The app features a Django backend, Flutter frontend, and Firebase database.",
       tech: ["Flutter", "Django", "Firebase"],
-      github: "#"
+      github: "https://github.com/agrimart44/AgriMart.git"
     },
     {
       id: 2,
@@ -24,7 +24,7 @@ export default function Projects() {
       description:
         "This system simulates a dynamic ticketing environment, built with Spring Boot backend, React.js frontend, and MySQL database to store configurations.",
       tech: ["Spring Boot", "React.js", "MySQL"],
-      github: "#"
+      github: "https://github.com/SahanRashmika613/OOP-.git"
     },
     {
       id: 3,
@@ -34,7 +34,7 @@ export default function Projects() {
       description:
         "A Java console application to manage student records, with validation, text-based persistent storage, report generation, and sorting algorithms like merge sort.",
       tech: ["Java", "File I/O", "Sorting", "Exception Handling", "OOP"],
-      github: "#"
+      github: "https://github.com/SahanRashmika613/Student-Management-System.git"
     },
     {
       id: 4,
@@ -44,7 +44,7 @@ export default function Projects() {
       description:
         "A Python desktop app evolved from CLI to Tkinter GUI, using JSON for storage, supporting task creation, updates, and object-oriented design.",
       tech: ["Python", "Tkinter", "JSON", "OOP"],
-      github: "#"
+      github: "https://github.com/SahanRashmika613/Personal-Task-Manager-.git"
     },
   ];
 
@@ -83,14 +83,14 @@ export default function Projects() {
       {/* Modal */}
       {selectedProject && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur flex justify-center items-center z-50">
-          <div className="bg-black rounded-xl p-8 max-w-xl relative border border-pink-500 shadow-xl">
+          <div className="bg-black rounded-xl p-8 max-w-xl relative border border-purple-500 shadow-xl">
             <button
               onClick={() => setSelectedProject(null)}
               className="absolute top-2 right-2 text-white hover:text-pink-500 text-2xl"
             >
               &times;
             </button>
-            <h2 className="text-2xl font-extrabold text-pink-500 mb-4">
+            <h2 className="text-2xl font-extrabold text-purple-500 mb-4">
               {selectedProject.title}
             </h2>
             <p className="text-gray-300 mb-4">{selectedProject.description}</p>
@@ -108,7 +108,7 @@ export default function Projects() {
               href={selectedProject.github}
               target="_blank"
               rel="noreferrer"
-              className="inline-block bg-green-500 px-4 py-2 rounded hover:bg-green-600 transition"
+              className="inline-block bg-red-600 px-4 py-2 rounded hover:bg-green-600 transition"
             >
               View on GitHub
             </a>
