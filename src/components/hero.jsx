@@ -88,7 +88,7 @@ export default function Hero() {
             View My Work
           </a>
           <a
-            href="/cv.pdf"
+            href="/../public/Rashmika_liyanage_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-2 md:py-3 border border-purple-500 rounded-full font-bold hover:bg-stone-50 hover:text-black transition"
